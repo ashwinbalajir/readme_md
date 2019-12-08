@@ -1,0 +1,206 @@
+{
+	"variables": [],
+	"info": {
+		"name": "elastic search",
+		"_postman_id": "8505ace0-16bd-f96e-dd2d-8d57115df00e",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9200/movies/movie/_bulk",
+			"request": {
+				"url": "http://localhost:9200/movies/movie/_bulk",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"index\" : { } }\n{  \"name\":\"Thor Ragnarok\",  \"genre\":\"Action\", \"summary\":\"Thor is imprisoned on the planet Sakaar, and must race  against time to return to Asgard and stop Ragnarök, the destruction of his world, at the hands of the powerful and ruthless villain Hela\", \"yearofrelease\":2017, \"metascore\":74, \"votes\":374270, \"rating\":7.9 }\n{ \"index\" : {} }\n{  \"name\":\"Infinity War\",  \"genre\":\"Sci-Fi\",   \"summary\":\"The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe\", \"yearofrelease\":2018, \"metascore\":68, \"votes\":450856, \"rating\":8.6 }\n{ \"index\" : {} }\n{  \"name\":\"Christopher Robin\",  \"genre\":\"Comedy\", \"summary\":\"A working-class family man, Christopher Robin, encounters his childhood friend Winnie-the-Pooh, who helps him to  rediscover the joys of life\", \"yearofrelease\":2018, \"metascore\":60, \"votes\":9648, \"rating\":7.9}\n\n\n"
+				},
+				"description": "bulk save"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9200/",
+			"request": {
+				"url": "http://localhost:9200/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "check connection"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9200/movies/",
+			"request": {
+				"url": "http://localhost:9200/movies/",
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"description": "to create index"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9200/movies/movie/",
+			"request": {
+				"url": "http://localhost:9200/movies/movie/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \"name\":\"Thor Ragnarok\",  \"genre\":\"Action\", \"summary\":\"Thor is imprisoned on the planet Sakaar, and must race  against time to return to Asgard and stop Ragnarök, the destruction of his world, at the hands of the powerful and ruthless villain Hela\", \"yearofrelease\":2017, \"metascore\":74, \"votes\":374270, \"rating\":7.9 }"
+				},
+				"description": "insert document"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9200/movies/_search",
+			"request": {
+				"url": "http://localhost:9200/movies/_search",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "get all docs"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9200/movies/_search?q=ashwin",
+			"request": {
+				"url": {
+					"raw": "http://localhost:9200/movies/_search?q=ashwin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"movies",
+						"_search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "ashwin",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "search all fields using text and return matched results"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9200/movies/_search?q=genre:Action.",
+			"request": {
+				"url": {
+					"raw": "http://localhost:9200/movies/_search?q=genre:Action.",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"movies",
+						"_search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "genre:Action.",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "search only for field name"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9200/movies/_search",
+			"request": {
+				"url": "http://localhost:9200/movies/_search",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"query\": {\n      \"multi_match\": {\n         \"query\": \"ashwin\",\n         \"fields\": [\"value\",\"name\"]\n    }\n \n }\n}"
+				},
+				"description": "search with multiple fields"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9200/movies/_mapping",
+			"request": {
+				"url": "http://localhost:9200/movies/_mapping",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"properties\": {\n    \"title\":  { \"type\": \"text\"}\n  }\n}"
+				},
+				"description": "mapping add new field to schema"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9200/movies/_mapping",
+			"request": {
+				"url": "http://localhost:9200/movies/_mapping",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"properties\": {\n    \"title3\":   { \"properties\" : {\n            \"first\" : {\n              \"type\" : \"text\"\n            },\n            \"last\" : {\n              \"type\" : \"text\"\n            }\n    }\n  }\n}\n}\n\n"
+				},
+				"description": "mapping add new field as object to schema"
+			},
+			"response": []
+		}
+	]
+}
