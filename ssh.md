@@ -12,7 +12,7 @@
     ssh-keygen -t rsa -b 4096 -C "ashwin.achu.1311@gmail.com"
     -t rsa : Specifies the type of key to create. The possible values are “rsa1” for protocol version 1 and “dsa”, “ecdsa”, “ed25519”, or “rsa” for protocol version 2.
     -b 4096 : Specifies the number of bits in the key to create
-    -f ~/.ssh/github.key : Specifies the filename of the key file.
+    -f ~/.ssh/github.key : Specifies the filename of the key file.(for new file name give from root path in format mentioned)
     -C for comment.
 ```
 

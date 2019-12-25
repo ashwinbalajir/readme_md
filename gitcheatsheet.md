@@ -1,8 +1,8 @@
 # To change user name and email
 
 ```
-    git config --global user.name "ashwin"
-    git config --global user.email ashwin@mail.com
+git config --global user.name "ashwin"
+git config --global user.email ashwin@mail.com
 ```
 
 - project - The data is stored directly in the corresponding project(repository) under .git/config.
@@ -23,13 +23,13 @@ git config --get user.email
 # Adding remote url
 
 ```
-    git remote add origin <remote url>
+git remote add origin <remote url>
 ```
 
 # Updating remote url
 
 ```
-    git remote set-url origin <remote url>
+git remote set-url origin <remote url>
 ```
 
 # Amend to previous commit
@@ -37,14 +37,14 @@ git config --get user.email
 - Amend to commit with comment
 
 ```
-    git commit --amend -m <commit message>
+git commit --amend -m <commit message>
 
 ```
 
 - Amend without message
 
 ```
-    git commit --amend --no-edit
+git commit --amend --no-edit
 
 ```
 
@@ -54,10 +54,10 @@ git config --get user.email
 - ours - Accept outgoing change.
 
 ```
-    git pull -X theirs (for accepting incoming change)
-    git checkout --theirs path/to/file(already conflicted state)
-    git checkout --theirs .
-    git checkout --ours .
+git pull -X theirs (for accepting incoming change)
+git checkout --theirs path/to/file(already conflicted state)
+git checkout --theirs .
+git checkout --ours .
 ```
 
 ```
